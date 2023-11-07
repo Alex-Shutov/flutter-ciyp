@@ -1,0 +1,1 @@
+enum ScaffoldGradientAlignment{none, top, bottom}
