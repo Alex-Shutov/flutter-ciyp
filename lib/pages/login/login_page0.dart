@@ -44,7 +44,7 @@ class _MainLoginPageState extends State<MainLoginPage> {
                 onPressed: () => AutoRouter.of(context).navigate(AuthRoute1()),
               ),
             )),
-                routes: const [
+                routes:  [
           AuthRoute1(),
           AuthRoute2(),
           AuthRoute3(),
@@ -55,6 +55,7 @@ class _MainLoginPageState extends State<MainLoginPage> {
           AuthRoute8(),
           AuthRoute9(),
           AuthRoute10(),
+          The1Route()
                 ],
               ));
   // build(ctx) => Scaffold(

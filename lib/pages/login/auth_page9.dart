@@ -19,8 +19,8 @@ class AuthPage9 extends StatefulWidget {
 class _AuthPage9State extends State<AuthPage9> {
   @override
   Widget build(BuildContext context) {
-    const route = AuthRoute10();
-    return const BaseAuth(
+    var route = AuthRoute10();
+    return BaseAuth(
         headerText: 'Создать \nАккаунт',
         afterCentredChildHeight: 125,
         beforeFormHeight: 80,

@@ -17,6 +17,7 @@ class LoginFooterContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppTextButton(
+      key: GlobalKey(),
       leftText: leftText,
       onPressed: onPressed ?? () => context.navigateTo(AuthRoute1()),
       text: text ?? 'Войти',

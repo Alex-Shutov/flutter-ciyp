@@ -17,14 +17,22 @@ class AppTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context){
-    final textTheme = Theme.of(context).textTheme.displayLarge;
-    print(textTheme);
+    final textTheme = Theme.of(context).textTheme;
+    final displayLarge = textTheme.displayLarge;
+    print(displayLarge);
     return Row(
       
-      children: [
-      if(leftText !=null && leftText!.isNotEmpty) Flexible(child: Text(leftText!)),
-      Flexible(child: TextButton(onPressed: onPressed, child: Text(text))),
-      if(rightText !=null && rightText!.isNotEmpty) Flexible(child: Text(rightText!))
+     children: [
+        if (leftText != null && leftText!.isNotEmpty) 
+          Flexible(child: Text(leftText!, )),
+        Flexible(
+          child: TextButton(
+            onPressed: onPressed, 
+            child: Text(text,),
+          ),
+        ),
+        if (rightText != null && rightText!.isNotEmpty) 
+          Flexible(child: Text(rightText!, )),
       ],
     );
   }

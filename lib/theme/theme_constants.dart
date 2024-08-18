@@ -7,7 +7,7 @@ class AppColors extends Color{
   AppColors(super.value);
 
   static Color get Black => Colors.black;
-  static Color get White => const Color(0xFFecf0f1);
+  static Color get White => Color.fromARGB(255, 255, 255, 255);
   
   static Color get  MediumBlue => const Color.fromRGBO(116, 121, 253, 1);
 

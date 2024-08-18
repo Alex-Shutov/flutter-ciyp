@@ -4,7 +4,9 @@ import 'package:get_it/get_it.dart';
 import 'package:pocket/router/router.dart';
 import 'package:pocket/pages/page1.dart';
 import 'package:pocket/pages/page2.dart';
+import 'package:pocket/store/app_store.dart';
 import 'package:pocket/store/theme_store/theme_store.dart';
+import 'package:pocket/theme/theme_constants.dart';
 import 'package:pocket/theme/theme_service.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +17,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _State extends State<HomePage> {
-
+  final appStore = GetIt.I<AppStore>();
   var themeStore;
 
   @override
@@ -23,22 +25,42 @@ class _State extends State<HomePage> {
     super.didChangeDependencies();
 
     themeStore ??= Provider.of<ThemeStore>(context);
+    
   }
   // var _themeManager = GetIt.I.get<ThemeService>();
   @override
-  build(ctx) => AutoTabsScaffold(
-    extendBodyBehindAppBar: true,
-    appBarBuilder:((context,_) =>  AppBar(
-      forceMaterialTransparency:true
-     )),
-        routes: [
-          The1Route(),
-          // The2Route(),
-          // The3Route(),
-          // The4Route()
-          
-        ],
-      );
+  Widget build(BuildContext ctx) {
+    return AutoTabsScaffold(
+      extendBodyBehindAppBar: true,
+      appBarBuilder: (context, tabRouter) {
+        bool isThe1Route = tabRouter.activeIndex == 0; // Assuming The1Route is at index 0
 
-
+        return AppBar(
+          forceMaterialTransparency: true,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: appStore.appBarColor),
+            onPressed: () {
+              AutoRouter.of(context).navigate(The1Route());
+            },
+          ),
+          actions: isThe1Route
+              ? [
+                  IconButton(
+                    icon: Icon(Icons.menu, size: 28.0, color: AppColors.Black),
+                    onPressed: () {
+                       AutoRouter.of(context).navigate(const MenuComponentRoute());
+                    },
+                  ),
+                ]
+              : [],
+        );
+      },
+      routes: [
+        The1Route(),
+        PlaceDetailRoute(),
+        MenuComponentRoute(),
+        MyOffersRoute()
+      ],
+    );
+  }
 }

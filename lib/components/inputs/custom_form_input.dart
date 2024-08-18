@@ -26,7 +26,7 @@ const CustomFormInput({
         children: [
           if(label!=null) 
               Padding(
-                padding: const EdgeInsets.only(left: 22,bottom: 18),
+                padding: const EdgeInsets.only(left: 0,bottom: 18),
                 child: Flexible(child: Text(label!,style: labelTheme?.copyWith(color: AppColors.DarkPurple),)),
               ),
             

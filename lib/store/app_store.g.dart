@@ -25,6 +25,22 @@ mixin _$AppStore on _AppStore, Store {
     });
   }
 
+  late final _$appBarColorAtom =
+      Atom(name: '_AppStore.appBarColor', context: context);
+
+  @override
+  Color get appBarColor {
+    _$appBarColorAtom.reportRead();
+    return super.appBarColor;
+  }
+
+  @override
+  set appBarColor(Color value) {
+    _$appBarColorAtom.reportWrite(value, super.appBarColor, () {
+      super.appBarColor = value;
+    });
+  }
+
   late final _$_AppStoreActionController =
       ActionController(name: '_AppStore', context: context);
 
@@ -53,7 +69,8 @@ mixin _$AppStore on _AppStore, Store {
   @override
   String toString() {
     return '''
-loggedIn: ${loggedIn}
+loggedIn: ${loggedIn},
+appBarColor: ${appBarColor}
     ''';
   }
 }

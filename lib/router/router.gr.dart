@@ -22,9 +22,11 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     AuthRoute10.name: (routeData) {
+      final args = routeData.argsAs<AuthRoute10Args>(
+          orElse: () => const AuthRoute10Args());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: AuthPage10(),
+        child: AuthPage10(key: args.key),
       );
     },
     AuthRoute2.name: (routeData) {
@@ -93,6 +95,24 @@ abstract class _$AppRouter extends RootStackRouter {
         child: MainLoginPage(),
       );
     },
+    MenuComponentRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: MenuComponentPage(),
+      );
+    },
+    MyOffersRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: MyOffersPage(),
+      );
+    },
+    PlaceDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PlaceDetailPage(),
+      );
+    },
     The1Route.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -136,16 +156,30 @@ class AuthRoute1 extends PageRouteInfo<void> {
 
 /// generated route for
 /// [AuthPage10]
-class AuthRoute10 extends PageRouteInfo<void> {
-  const AuthRoute10({List<PageRouteInfo>? children})
-      : super(
+class AuthRoute10 extends PageRouteInfo<AuthRoute10Args> {
+  AuthRoute10({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           AuthRoute10.name,
+          args: AuthRoute10Args(key: key),
           initialChildren: children,
         );
 
   static const String name = 'AuthRoute10';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<AuthRoute10Args> page = PageInfo<AuthRoute10Args>(name);
+}
+
+class AuthRoute10Args {
+  const AuthRoute10Args({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'AuthRoute10Args{key: $key}';
+  }
 }
 
 /// generated route for
@@ -298,6 +332,48 @@ class MainLoginRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'MainLoginRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MenuComponentPage]
+class MenuComponentRoute extends PageRouteInfo<void> {
+  const MenuComponentRoute({List<PageRouteInfo>? children})
+      : super(
+          MenuComponentRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MenuComponentRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MyOffersPage]
+class MyOffersRoute extends PageRouteInfo<void> {
+  const MyOffersRoute({List<PageRouteInfo>? children})
+      : super(
+          MyOffersRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MyOffersRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PlaceDetailPage]
+class PlaceDetailRoute extends PageRouteInfo<void> {
+  const PlaceDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          PlaceDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PlaceDetailRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

@@ -27,7 +27,10 @@ AuthPage10({ Key? key }) : super(key: key);
         afterCentredChildHeight: 125,
         beforeFormHeight: 80,
         afterFormHeight: 20,
-        actionButton: LoginButtonNext(route: route, onPressed: ()=>_appStore.login()),
+        actionButton: LoginButtonNext(route: route, onPressed: ()=>{
+          _appStore.login(),
+          AutoRouter.of(context).navigate(The1Route())
+        }),
         centredChild: CategoryContainer(
           categoryButtons: [
             CategoryModel('Рестораны', 'restaraunt'),

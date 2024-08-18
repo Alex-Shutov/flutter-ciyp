@@ -25,6 +25,7 @@ class AuthPage1 extends StatelessWidget {
               Center(
                 child: LoginForm(
                   widgetBottom: AppTextButton(
+                    key: GlobalKey(),
                     onPressed: () => ctx.navigateTo(AuthRoute10()),
                     text: 'Забыли пароль?',
                   ),

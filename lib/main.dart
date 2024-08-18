@@ -6,7 +6,9 @@ import 'package:pocket/locator.dart';
 import 'package:pocket/pages/login/login_page0.dart';
 import 'package:pocket/router/router.dart';
 import 'package:pocket/store/app_store.dart';
+import 'package:pocket/store/place_store.dart';
 import 'package:pocket/store/theme_store/theme_store.dart';
+import 'package:pocket/store/user_store.dart';
 import 'package:pocket/theme/theme_constants.dart';
 import 'package:pocket/theme/theme_repository.dart';
 import 'package:pocket/theme/theme_service.dart';
@@ -30,11 +32,14 @@ class MyApp extends StatelessWidget {
         Provider<ThemeStore>(
             create: (_) =>
                 ThemeStore(ThemeService(ThemeRepository()))..getTheme()),
-        Provider<AppStore>(create: (_) => AppStore())
+        Provider<AppStore>(create: (_) => AppStore()),
+         Provider<PlaceStore>(create: (_) => PlaceStore()),
+          Provider<UserStore>(create: (_) => UserStore())
       ],
-      child: Consumer2<ThemeStore,AppStore>(
-        builder: (_, ThemeStore themeStore, AppStore appStore, __) => Observer(
+      child: Consumer4<ThemeStore, AppStore, PlaceStore,UserStore>(
+        builder: (_, ThemeStore themeStore, AppStore appStore, PlaceStore placestore,UserStore userStore,  __) => Observer(
             builder: (_) => MaterialApp.router(
+                
                   title: 'Pocket',
                   debugShowCheckedModeBanner: false,
                   theme: themeStore.theme,
